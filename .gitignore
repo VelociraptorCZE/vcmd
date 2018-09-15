@@ -1,0 +1,7 @@
+*.o
+Makefile.win
+vcmd_private.h
+vcmd_private.rc
+vcmd_private.res
+vcmd.dev
+vcmd.layout
