@@ -1,3 +1,4 @@
+!vcmd.exe
 *.o
 Makefile.win
 vcmd_private.h
