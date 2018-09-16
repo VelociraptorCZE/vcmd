@@ -1,8 +1,9 @@
-/* vcmd v0.2
+/* vcmd v0.3
  * Copyright (C) Simon Raichl 2018
- * MIT Licence
+ * MIT License
  * Use this as you want, share it as you want, do basically whatever you want with this :)
 */
+
 int run() {
 	char d[MAX_DIR_LENGTH];
   	GetCurrentDir(d, MAX_DIR_LENGTH);
@@ -36,7 +37,7 @@ int run() {
 		else if (strcmp(command[0], "clear") == 0) {
 			clear();
 		}
-		else if (strcmp(command[0], "l") == 0) {
+		else if (strcmp(command[0], "l") == 0 || strcmp(command[0], "ll") == 0 || strcmp(command[0], "ls") == 0) {
 			getDir(command);
 		}
 		else if (strcmp(command[0], "d") == 0) {
@@ -45,10 +46,15 @@ int run() {
 		else if (strcmp(command[0], "r") == 0) {
 			runProgram(command);
 		}
+		else if (strcmp(command[0], "f") == 0) {
+			fileOperation(command);
+		}		
+		else if (strcmp(command[0], "*") == 0) {
+			other(command);
+		}
 		else {
 			printf("Not recognized command '%s'", input);
 		}
 	}
-	printf("\n");
 	run();
 }

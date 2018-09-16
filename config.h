@@ -1,25 +1,30 @@
-/* vcmd v0.2
+/* vcmd v0.3
  * Copyright (C) Simon Raichl 2018
- * MIT Licence
+ * MIT License
  * Use this as you want, share it as you want, do basically whatever you want with this :)
 */
+
+#define MAX_BUFFER_LENGTH 8192
 #define MAX_CMD_LENGTH 1024
 #define MAX_DIR_LENGTH 512
 #define MAX_PARAMS_LENGTH 12
 #define HELP_LENGTH 50
 
-char *info = "vcmd - type help for available commands\nVersion 0.2\nCopyright (C) Simon Raichl 2018, MIT license\n";
+char *info = "vcmd - type help for available commands\nVersion 0.3\nCopyright (C) Simon Raichl 2018, MIT license\n";
 
 //HELP
 
 char *help[HELP_LENGTH] = { 
 "\nHELP-----------------\nCOMMANDS:",
-"calc - does a math operation with two numbers, example: calc 9 / 5",
+"calc - does the math operation with two numbers, example: calc 9 / 5",
 "clear - clears a console window",
-"d - does an operations with directories, d -m to create folder, d -r to remove folder",
+"d - does the operations with directories, d -m to create folder, d -r to remove folder",
+"exit - kills this cmd",
+"f - does the operations with files, f -rd to read, f -r to remove, f -m to create, f -w to write",
 "help - shows this list",
 "l - gets a directory content",
-"r - runs a program"
+"r - runs a program",
+"* - global command, * -rn to rename file or directory"
 };
 
 void helpStack(){
