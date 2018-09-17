@@ -1,4 +1,4 @@
-/* vcmd v0.3
+/* vcmd v0.4
  * Copyright (C) Simon Raichl 2018
  * MIT License
  * Use this as you want, share it as you want, do basically whatever you want with this :)
@@ -42,6 +42,15 @@ void other(char *c[]){
 	}
 }
 
+void print(char *c[]){
+	int i = 1;
+	while(i < MAX_PARAMS_LENGTH && c[i] != NULL){
+		printf("%s ", c[i]);
+		i++;
+	}
+	printf("\n");
+}
+
 void dirOperation(char *c[]){
 	if (c[1] != '\0'){
 		if (strcmp(c[1], "-m") == 0){
@@ -53,14 +62,14 @@ void dirOperation(char *c[]){
 	}
 }
 
+void runScript(char *c[]){
+	readFile(c[1], 1);
+}
+
 void fileOperation(char *c[]){
 	FILE *f;
 	if (strcmp(c[1], "-rd") == 0){
-		char ch;
-		f = fopen(c[2], "r");
-		while((ch = fgetc(f)) != EOF){
-        	printf("%c", ch);
-    	}
+		readFile(c[2], 0);
 	}
 	else if (strcmp(c[1], "-r") == 0){
 		remove(c[2]);
@@ -74,8 +83,13 @@ void fileOperation(char *c[]){
 		char input[MAX_BUFFER_LENGTH];
 		gets(input);
 		fprintf(f, "%s", input);
+		fclose(f);
 	}
-	fclose(f);
+}
+
+void wait(){
+	printf("\nPress any key to continue...\n");
+	getch();
 }
 
 void getDir(char *c[]){

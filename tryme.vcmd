@@ -1,0 +1,9 @@
+print This is first line!
+print This is second line!
+print Now I will dump the content of this directory:
+wait
+l
+print Cool, right? Also I can count something for you, so for example what about 78458 / 897?
+print Result:
+calc 78458 / 897
+EOF

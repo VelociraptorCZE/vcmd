@@ -1,16 +1,22 @@
-/* vcmd v0.3
+/* vcmd v0.4
  * Copyright (C) Simon Raichl 2018
  * MIT License
  * Use this as you want, share it as you want, do basically whatever you want with this :)
 */
 
-int run() {
-	char d[MAX_DIR_LENGTH];
-  	GetCurrentDir(d, MAX_DIR_LENGTH);
-  	printf("\n%s>", d);
-  
+int run(char external[MAX_CMD_LENGTH]) {
+  	
 	char input[MAX_CMD_LENGTH];
-	gets(input);
+  	
+  	if (strcmp(external, "void") == 0){ 	
+	  	char d[MAX_DIR_LENGTH];
+  		GetCurrentDir(d, MAX_DIR_LENGTH);
+  		printf("\n%s>", d);	
+		gets(input);
+	}
+	else{
+		strcpy(input, external);
+	}
 	if (strcmp(input, "") != 0) {
 		int i = 0;
 		char *command[MAX_PARAMS_LENGTH];
@@ -48,7 +54,16 @@ int run() {
 		}
 		else if (strcmp(command[0], "f") == 0) {
 			fileOperation(command);
-		}		
+		}
+		else if (strcmp(command[0], "print") == 0) {
+			print(command);
+		}
+		else if (strcmp(command[0], "wait") == 0) {
+			wait();
+		}
+		else if (strcmp(command[0], "s") == 0) {
+			runScript(command);
+		}	
 		else if (strcmp(command[0], "*") == 0) {
 			other(command);
 		}
@@ -56,5 +71,7 @@ int run() {
 			printf("Not recognized command '%s'", input);
 		}
 	}
-	run();
+	if (strcmp(external, "void") == 0){
+		run(external);	
+	}
 }
