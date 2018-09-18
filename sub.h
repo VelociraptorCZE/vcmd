@@ -1,4 +1,4 @@
-/* vcmd v0.4
+/* vcmd v0.5
  * Copyright (C) Simon Raichl 2018
  * MIT License
  * Use this as you want, share it as you want, do basically whatever you want with this :)
@@ -30,4 +30,33 @@ void readFile(char file[], int cmd){
 		}
     }
     fclose(f);
+}
+
+char *getVarValue(char *varName){
+	char *val = "0";
+	if (strstr(varName, "$") != NULL){
+		int i = 0;
+		while(i < varId){
+			if (strcmp(varName, var[i].name) == 0){
+				val = var[i].value;
+				break;
+			}
+			i++;
+		}
+		return val;
+	}
+}
+
+void dumpVars(){
+	int i = 0;
+	printf("\nList of currently declared variables:\n");
+	if (varId > 0){
+		while (i < varId){
+			printf("%s = %s\n", var[i].name, var[i].value);
+			i++;
+		}	
+	}
+	else{
+		printf("You haven't declared any variables so far!\n");
+	}
 }

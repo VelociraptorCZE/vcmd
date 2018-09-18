@@ -1,4 +1,4 @@
-/* vcmd v0.4
+/* vcmd v0.5
  * Copyright (C) Simon Raichl 2018
  * MIT License
  * Use this as you want, share it as you want, do basically whatever you want with this :)
@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
+#include <locale.h>
 
 #ifdef WINDOWS
 #include <direct.h>
@@ -22,6 +23,5 @@
 #include "config.h"
 #include "sub.h"
 #include "commands.h"
-
 
 #include "core.h"

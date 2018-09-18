@@ -1,5 +1,5 @@
-print This is first line!
-print This is second line!
+print This is the first line!
+print This is the second line!
 print Now I will dump the content of this directory:
 wait
 l

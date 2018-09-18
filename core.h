@@ -1,4 +1,4 @@
-/* vcmd v0.4
+/* vcmd v0.5
  * Copyright (C) Simon Raichl 2018
  * MIT License
  * Use this as you want, share it as you want, do basically whatever you want with this :)
@@ -60,6 +60,9 @@ int run(char external[MAX_CMD_LENGTH]) {
 		}
 		else if (strcmp(command[0], "wait") == 0) {
 			wait();
+		}
+		else if (strcmp(command[0], "var") == 0) {
+			declareVariable(command);
 		}
 		else if (strcmp(command[0], "s") == 0) {
 			runScript(command);
